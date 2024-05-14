@@ -2,16 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+const cors = require('cors');
+
 
 const userRoutes = require('./routes/user');
 
-mongoose.connect('mongodb+srv://razzinieva42:T0uvHEZsjUNPQC3d@cluster0.kshishf.mongodb.net/',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://razzinieva42:T0uvHEZsjUNPQC3d@cluster0.kshishf.mongodb.net/')
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
 const app = express();
+app.use(cors());
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -20,7 +21,8 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
+app.use(express.json());
+
 
 app.use('/api/auth', userRoutes);
 

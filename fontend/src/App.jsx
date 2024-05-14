@@ -1,23 +1,20 @@
-import Topbar from "./components/scenes/global/Topbar";
-import { ColorModeContext } from "./theme";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginForm from './components/Login/LoginForm';
+import SignupForm from './components/Signup/SignupForm'; 
 
-function App(){
-    const [theme, ColorMode] = useMode();
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route exact path="/" element={<LoginForm />} />
+          <Route exact path="/signup" element={<SignupForm />} />
+          {/* Ajoutez d'autres routes ici si nécessaire */}
+        </Routes>
+      </div>
+    </Router>
+  );
+};
 
-
-    return (
-        <ColorModeContext.Provider value={ColorMode}>
-            <ThemeProvider theme={theme}>
-                <CssBaseline/>
-                <div className="app">
-                    <main className="content">
-                        <Topbar/>
-                    </main>
-                </div>
-            </ThemeProvider>
-        </ColorModeContext.Provider>
-    );
-}
-
-export default App
+export default App;

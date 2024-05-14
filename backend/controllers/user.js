@@ -9,7 +9,8 @@ exports.signup = (req, res, next) => {
       .then(hash => {
         const user = new User({
           email: req.body.email,
-          password: hash
+          password: hash,
+          phone: req.body.phone
         });
         user.save()
           .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
