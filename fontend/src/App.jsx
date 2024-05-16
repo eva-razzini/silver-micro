@@ -1,15 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginForm from './components/Login/LoginForm';
-import SignupForm from './components/Signup/SignupForm'; 
+import SignupForm from './components/Signup/SignupForm';
+import RestaurantList from './components/Restaurant/Restaurant';
+import './App.css';
 
 const App = () => {
   return (
     <Router>
       <div>
         <Routes>
-          <Route exact path="/" element={<LoginForm />} />
-          <Route exact path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/" element={<SignupForm />} />
+          <Route path="/restaurants" element={<RestaurantList />} />
           {/* Ajoutez d'autres routes ici si nécessaire */}
         </Routes>
       </div>

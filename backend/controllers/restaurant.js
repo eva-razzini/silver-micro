@@ -13,7 +13,7 @@ exports.getAllRestaurants = (req, res, next) => {
 
 
 exports.addRestaurant = (req, res, next) => {
-    if (req.auth.role !== 'super-admin') {
+    if (req.auth.role !== 'super-admin')  {
         return res.status(403).json({ message: "Vous n'êtes pas autorisé à effectuer cette action." });
     }
 
