@@ -1,38 +1,41 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ReservationForm from './ReservationForm';
 
-const Restaurant = () => {
-    const [restaurants, setRestaurants] = useState([]);
+const RestaurantList = () => {
+  const [restaurants, setRestaurants] = useState([]);
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
-    // Méthode pour récupérer la liste des restaurants depuis le backend
-    const fetchRestaurants = async () => {
-        try {
-            const response = await axios.get('/api/restaurants');
-            setRestaurants(response.data);
-        } catch (error) {
-            console.error('Error fetching restaurants:', error);
-        }
-    };
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/restaurants')
+      .then(response => {
+        setRestaurants(response.data);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the restaurants!', error);
+      });
+  }, []);
 
-    useEffect(() => {
-        fetchRestaurants();
-    }, []);
+  const handleReserve = (restaurantId) => {
+    setSelectedRestaurant(restaurantId);
+  };
 
-    return (
-        <div>
-            <h2>Liste des Restaurants</h2>
-            <ul>
-                {restaurants.map(restaurant => (
-                    <li key={restaurant._id}>
-                        <h3>{restaurant.title}</h3>
-                        <p>{restaurant.description}</p>
-                        <img src={restaurant.imageUrl} alt={restaurant.title} />
-                        {/* Ajoutez ici un bouton pour réserver le restaurant */}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Liste des Restaurants</h1>
+      <ul>
+        {restaurants.map(restaurant => (
+          <li key={restaurant._id}>
+            <h2>{restaurant.title}</h2>
+            <p>{restaurant.description}</p>
+            <img src={restaurant.imageUrl} alt={restaurant.title} />
+            <button onClick={() => handleReserve(restaurant._id)}>Réserver</button>
+          </li>
+        ))}
+      </ul>
+      {selectedRestaurant && <ReservationForm restaurantId={selectedRestaurant} />}
+    </div>
+  );
 };
 
-export default Restaurant;
+export default RestaurantList;

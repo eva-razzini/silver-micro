@@ -6,6 +6,8 @@ const cors = require('cors');
 
 
 const userRoutes = require('./routes/user');
+const restaurantRoutes = require('./routes/restaurant');
+const reservationRoutes = require('./routes/reservation');
 
 mongoose.connect('mongodb+srv://razzinieva42:T0uvHEZsjUNPQC3d@cluster0.kshishf.mongodb.net/')
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -25,5 +27,7 @@ app.use(express.json());
 
 
 app.use('/api/auth', userRoutes);
+app.use('/api/restaurants', restaurantRoutes);
+app.use('/api/reservations', reservationRoutes);
 
 module.exports = app;
