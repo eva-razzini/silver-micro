@@ -33,7 +33,7 @@ exports.signup = (req, res, next) => {
             }
             res.status(200).json({
               userId: user._id,
-              role: user.role,  // Assurez-vous d'inclure le rôle dans la réponse
+              role: user.role, 
               token: jwt.sign(
                 { userId: user._id, role: user.role },
                 'RANDOM_TOKEN_SECRET',
