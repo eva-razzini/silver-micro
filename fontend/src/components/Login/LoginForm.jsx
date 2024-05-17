@@ -19,7 +19,12 @@ const LoginForm = () => {
     try {
       const response = await axios.post('http://localhost:3000/api/auth/login', formData);
       console.log(response.data);
-      const role = response.data.role;
+      const { role, token } = response.data;
+      
+      // Stockez le token et le rôle dans le stockage local ou un contexte global pour l'utiliser ultérieurement
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', role);
+
       if (role === 'super-admin' || role === 'admin') {
         navigate('/dashboard');
       } else {

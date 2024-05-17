@@ -4,6 +4,7 @@ const restaurantCtrl = require('../controllers/restaurant');
 const reservationCtrl = require('../controllers/reservation');
 const authMiddleware = require('../middleware/auth');
 
+
 router.get('/', restaurantCtrl.getAllRestaurants);
 router.post('/', authMiddleware, restaurantCtrl.addRestaurant);
 router.put('/:id', authMiddleware, restaurantCtrl.updateRestaurant);
