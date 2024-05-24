@@ -6,6 +6,7 @@ import RestaurantList from './components/Restaurant/Restaurant';
 import Dashboard from './components/Dashboard/Dashboard';
 import MemberManagement from './components/Dashboard/MemberManagement';
 import PartnerManagement from './components/Dashboard/PartnerManagement';
+import ReservationPlanning from './components/dashboard/Planning';
 import './App.css';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/membermanagement" element={<MemberManagement />} />
           <Route path="/partnermanagement" element={<PartnerManagement  />} />
+          <Route path="/reservationplanning" element={<ReservationPlanning  />} />
           {/* Ajoutez d'autres routes ici si nécessaire */}
         </Routes>
       </div>
