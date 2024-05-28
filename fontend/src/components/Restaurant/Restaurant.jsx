@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ReservationForm from '../reservation/ReservationForm'
+import ReservationForm from '../Reservation/ReservationForm'
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
