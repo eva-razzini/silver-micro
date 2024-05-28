@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginForm from './components/login/LoginForm';
 import SignupForm from './components/signup/SignupForm';
 import RestaurantList from './components/Restaurant/Restaurant';
-import Dashboard from './components/dashboard/Dashboard';
-import MemberManagement from './components/dashboard/MemberManagement';
-import PartnerManagement from './components/dashboard/PartnerManagement';
+import Dashboard from './components/Dashboard/Dashboard';
+import MemberManagement from './components/Dashboard/MemberManagement';
+import PartnerManagement from './components/Dashboard/PartnerManagement';
 import ReservationPlanning from './components/Dashboard/Planning';
 import './App.css';
 

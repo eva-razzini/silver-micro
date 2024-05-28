@@ -1,17 +1,28 @@
 const Reservation = require('../models/reservation');
 
-exports.createReservation = (req, res, next) => {
-    const reservation = new Reservation({
-      name_id: req.body.name_id,
-      numberpes: req.body.numberpes,
-      phone: req.body.phone,
-      datetime: req.body.datetime
-    });
-  
-    reservation.save()
-      .then(() => res.status(201).json({ message: 'Réservation créée avec succès !' }))
-      .catch(error => res.status(400).json({ error }));
+exports.getAllReservations = (req, res, next) => {
+  Reservation.find()
+    .populate('userId')
+    .populate('restaurantId')
+    .then(reservations => res.status(200).json(reservations))
+    .catch(error => res.status(400).json({ error }));
 };
+
+exports.createReservation = (req, res, next) => {
+  const reservation = new Reservation({
+    userId: req.auth.userId,
+    restaurantId: req.body.restaurantId,
+    date: req.body.date,
+    time: req.body.time,
+    numberOfGuests: req.body.numberOfGuests,
+    Phone: req.body.phone
+  });
+
+  reservation.save()
+    .then(() => res.status(201).json({ message: 'Reservation created successfully!' }))
+    .catch(error => res.status(400).json({ error }));
+};
+
 
 exports.getAllReservations = (req, res, next) => {
     Reservation.find()
