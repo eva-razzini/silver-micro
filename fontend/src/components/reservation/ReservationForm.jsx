@@ -69,7 +69,12 @@ const UserReservations = () => {
             <p>Nombre de personnes: {reservation.numberpes}</p>
             <p>Téléphone: {reservation.phone}</p>
             <p>Date et heure: {new Date(reservation.datetime).toLocaleString()}</p>
-            <button onClick={() => setSelectedReservation(reservation._id)}>Modifier</button>
+            <button onClick={() => {
+              setSelectedReservation(reservation._id);
+              setNumberpes(reservation.numberpes);
+              setPhone(reservation.phone);
+              setDatetime(new Date(reservation.datetime).toISOString().slice(0, 16));
+            }}>Modifier</button>
             <button onClick={() => handleDelete(reservation._id)}>Annuler</button>
           </li>
         ))}
