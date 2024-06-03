@@ -1,0 +1,21 @@
+li {
+    color: black;
+    padding: 12px;
+    box-shadow: 0px 0px 60px 0px rgba(71, 74, 182, 0.12);
+    display: flex;
+    margin: 37px;
+    font-size: 17px;
+    padding-top: 0px !important;
+    padding-right: 284px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+    align-items: center;
+}
+
+img {
+    max-width: 400px;
+}
+
+.inforesto{
+    margin-left: 50px;
+}

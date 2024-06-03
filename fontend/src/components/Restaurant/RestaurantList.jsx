@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReservationForm from '../Reservation/ReservationForm';
+import './RestaurantList.css'
 
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -26,10 +27,14 @@ const RestaurantList = () => {
       <ul>
         {restaurants.map(restaurant => (
           <li key={restaurant._id}>
+            <div>
+             <img src={restaurant.imageUrl} alt={restaurant.title} /> 
+            </div>
+            <div class="inforesto">
             <h2>{restaurant.title}</h2>
             <p>{restaurant.description}</p>
-            <img src={restaurant.imageUrl} alt={restaurant.title} />
-            <button onClick={() => handleReserve(restaurant._id)}>Réserver</button>
+            <button onClick={() => handleReserve(restaurant._id)}>Réserver</button>              
+            </div>
           </li>
         ))}
       </ul>
