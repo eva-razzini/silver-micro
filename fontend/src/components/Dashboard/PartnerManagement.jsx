@@ -72,6 +72,13 @@ const PartnerManagement = () => {
       <div>
         <input
           type="text"
+          name="imageUrl"
+          placeholder="Image URL"
+          value={newRestaurant.imageUrl}
+          onChange={handleChange}
+        />        
+        <input
+          type="text"
           name="title"
           placeholder="Title"
           value={newRestaurant.title}
@@ -84,18 +91,18 @@ const PartnerManagement = () => {
           value={newRestaurant.description}
           onChange={handleChange}
         />
-        <input
-          type="text"
-          name="imageUrl"
-          placeholder="Image URL"
-          value={newRestaurant.imageUrl}
-          onChange={handleChange}
-        />
         <button onClick={handleAddRestaurant}>Add Restaurant</button>
       </div>
       {editRestaurant && (
         <div>
           <h3>Edit Restaurant</h3>
+          <input
+            type="text"
+            name="imageUrl"
+            placeholder="Image URL"
+            value={editRestaurant.imageUrl}
+            onChange={handleEditChange}
+          />          
           <input
             type="text"
             name="title"
@@ -110,13 +117,6 @@ const PartnerManagement = () => {
             value={editRestaurant.description}
             onChange={handleEditChange}
           />
-          <input
-            type="text"
-            name="imageUrl"
-            placeholder="Image URL"
-            value={editRestaurant.imageUrl}
-            onChange={handleEditChange}
-          />
           <button onClick={handleUpdateRestaurant}>Update Restaurant</button>
           <button onClick={() => setEditRestaurant(null)}>Cancel</button>
         </div>
@@ -124,11 +124,13 @@ const PartnerManagement = () => {
       <ul>
         {restaurants.map((restaurant) => (
           <li key={restaurant._id}>
-            <h3>{restaurant.title}</h3>
-            <p>{restaurant.description}</p>
             <img src={restaurant.imageUrl} alt={restaurant.title} />
-            <button onClick={() => setEditRestaurant(restaurant)}>Edit</button>
-            <button onClick={() => handleDeleteRestaurant(restaurant._id)}>Delete</button>
+            <div class="inforesto">
+              <h3>{restaurant.title}</h3>
+              <p>{restaurant.description}</p>
+              <button onClick={() => setEditRestaurant(restaurant)}>Edit</button>
+              <button onClick={() => handleDeleteRestaurant(restaurant._id)}>Delete</button>
+            </div>
           </li>
         ))}
       </ul>
