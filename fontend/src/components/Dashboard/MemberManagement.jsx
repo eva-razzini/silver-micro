@@ -139,7 +139,7 @@ const MemberManagement = () => {
       </div>
       <ul>
         {filteredMembers.map((member) => (
-          <li key={member._id}>
+          <li key={member._id} class="membres">
             <p>Email: {member.email}</p>
             <p>Phone: {member.phone}</p>
             <p>Role: {member.role}</p>

@@ -11,6 +11,4 @@ router.post('/signup', authMiddleware, userCtrl.addMember);
 router.put('/users/:id', authMiddleware, userCtrl.updateMember);
 router.delete('/users/:id', authMiddleware, userCtrl.deleteMember);
 
-
-
 module.exports = router;

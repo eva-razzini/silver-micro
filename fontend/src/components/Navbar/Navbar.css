@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    align-items: stretch;
+}
+.navbar {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav a{
+    text-decoration: none;
+    color: white;
+    padding: 33px;
+}
+
+.name {
+    padding-left: 20px;
+}
